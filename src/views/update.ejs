@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Abarrotes TIC</title>
+</head>
+
+<body>
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
+            <h1>Abarrotes TIC</h1>
+        </div>
+        <div data-role="content">
+            <form action="/api/products/<%= products.barcode %>" method="post">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="text" name="barcode" placeholder="Código de barras" value="<%= products.barcode %>">
+                <input type="text" name="description" placeholder="Descripcion" value="<%= products.description%>">
+                <input type="text" name="brand" placeholder="Marca" value="<%= products.brand %>">
+                <input type="number" name="price" placeholder="Precio de compra" value="<%= products.price %>">
+                <input type="number" name="cost" placeholder="Precio de venta" value="<%= products.cost %>">
+                <input type="number" name="stock" placeholder="Existencias" value="<%= products.stock %>">
+                <input type="date" name="expiredDate" placeholder="Caducidad" value="<%= products.expiredDate %>">
+                <select name="status" data-role="slider" data-mini="true" defaultvalue="<%= products.status %>">
+                    <% if (products.status == 1) { %>
+                        <option value="0">No</option>
+                         <option value="1" selected>Si</option>
+                        <% } else { %>
+                        <option value="0" selected>No</option>
+                        <option value="1" >Si</option>         
+                    <% } %>
+                    
+                        
+                </select>
+                <button type="submit" id="submit-8" class="ui-shadow ui-btn ui-corner-all ui-mini">Guardar producto</button>
+            </form>
+            
+        <div data-role="footer">
+            <h5>Developed by BraytoGBDX</h5>
+        </div>
+    </div>
+</body>
+
+</html>
